@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Deliveries{% endblock %}
+{% block header %}Ingredient Deliveries{% endblock %}
+{% block actions %}
+  <a href="/api/inventory/deliveries/new/" class="btn btn-secondary">
+    <i class="bi-plus-lg me-1"></i>New Delivery
+  </a>
+{% endblock %}
+
+{% block content %}
+{% for d in deliveries %}
+  <div class="col-12 col-md-6">
+    <div class="card border-0 shadow-sm card-hover h-100">
+      <div class="card-body">
+        <h6 class="text-muted mb-1">{{ d.delivery_date|date:"d M Y" }}</h6>
+        <h5 class="card-title">{{ d.ingredient.name }}</h5>
+        <div class="d-flex justify-content-between">
+          <span class="badge bg-primary">{{ d.quantity }} g</span>
+          <span class="text-muted small">by&nbsp;{{ d.created_by.username }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% empty %}
+  <p>No deliveries recorded.</p>
+{% endfor %}
+{% endblock %}

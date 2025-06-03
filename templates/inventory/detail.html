@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Ingredient{% endblock %}
+{% block header %}{{ ingredient.name }}{% endblock %}
+{% block actions %}
+  <a href="/api/inventory/ingredient/{{ ingredient.id }}/edit/" class="btn btn-outline-secondary">
+    <i class="bi-pencil-square me-1"></i>Edit
+  </a>
+{% endblock %}
+
+{% block content %}
+<div class="col-12 col-lg-6 mx-auto">
+  <div class="card border-0 shadow-sm">
+    <div class="card-body">
+      <div class="row mb-2">
+        <div class="col-6 text-muted">Quantity</div>
+        <div class="col-6 text-end fw-semibold">{{ ingredient.quantity }} g</div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-muted">Min level</div>
+        <div class="col-6 text-end">{{ ingredient.min_quantity }} g</div>
+      </div>
+
+      <hr class="my-4">
+
+      <h6 class="mb-3">Latest Deliveries</h6>
+      <ul class="list-group list-group-flush">
+        {% for d in ingredient.ingredientdelivery_set.all %}
+          <li class="list-group-item d-flex justify-content-between">
+            <span>{{ d.delivery_date|date:"d M Y" }}</span>
+            <span>{{ d.quantity }} g</span>
+          </li>
+        {% empty %}
+          <li class="list-group-item">No deliveries yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Served Meals{% endblock %}
+{% block header %}Served Meals History{% endblock %}
+{% block actions %}
+  <a href="/api/meals/served-meals/new/" class="btn btn-secondary">
+    <i class="bi-plus-lg me-1"></i>Record Serving
+  </a>
+{% endblock %}
+
+{% block content %}
+{% for s in served_meals %}
+  <div class="col-12 col-md-6">
+    <div class="card border-0 shadow-sm card-hover h-100">
+      <div class="card-body">
+        <h6 class="text-muted mb-1">{{ s.served_at|date:"d M Y H:i" }}</h6>
+        <h5 class="card-title">{{ s.meal.name }}</h5>
+        <p class="mb-0">
+          {% if s.success %}
+            <span class="badge bg-primary">Served</span>
+          {% else %}
+            <span class="badge bg-warning text-dark">Leftover</span>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+{% empty %}
+  <p>No records yet.</p>
+{% endfor %}
+{% endblock %}

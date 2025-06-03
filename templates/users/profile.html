@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block header %}My Profile{% endblock %}
+{% block content %}
+<div class="col-12 col-md-6 col-lg-4 mx-auto">
+  <div class="card border-0 shadow-sm">
+    <div class="card-body text-center">
+      <h4 class="mb-1">{{ request.user.username }}</h4>
+      <p class="text-muted mb-3">{{ request.user.email }}</p>
+      <a href="{% url 'logout' %}" class="btn btn-outline-secondary btn-sm">Log out</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

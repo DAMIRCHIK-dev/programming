@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ meal.name }}{% endblock %}
+{% block header %}{{ meal.name }}{% endblock %}
+{% block actions %}
+  <a href="/api/meals/meals/{{ meal.id }}/" class="btn btn-outline-secondary">
+    <i class="bi-pencil-square me-1"></i>Edit (API)
+  </a>
+{% endblock %}
+
+{% block content %}
+<div class="col-12 col-lg-8 mx-auto">
+  <div class="card border-0 shadow-sm">
+    <div class="card-body">
+      <p class="mb-4">{{ meal.description|linebreaks }}</p>
+
+      <h6 class="mb-3">Ingredients</h6>
+      <table class="table table-sm">
+        <thead><tr><th>Ingredient</th><th class="text-end">Required (g/ml)</th></tr></thead>
+        <tbody>
+          {% for comp in meal.mealingredient_set.all %}
+            <tr>
+              <td>{{ comp.ingredient.name }}</td>
+              <td class="text-end">{{ comp.quantity_required }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="2">No ingredients listed.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

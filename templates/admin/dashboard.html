@@ -1,0 +1,42 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row gx-4 gy-4">
+  <div class="col-md-4">
+    <div class="card card-hover h-100 text-center">
+      <div class="card-body">
+        <i class="fas fa-users fa-2x mb-3 text-secondary"></i>
+        <h5 class="card-title">Manage Users</h5>
+        <a href="{% url 'admin:auth_user_changelist' %}" class="btn btn-primary mt-2">
+          Go to Users
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card card-hover h-100 text-center">
+      <div class="card-body">
+        <i class="fas fa-pepper-hot fa-2x mb-3 text-danger"></i>
+        <h5 class="card-title">Ingredients</h5>
+        <a href="{% url 'admin:inventory_ingredient_changelist' %}" class="btn btn-primary mt-2">
+          Manage Ingredients
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card card-hover h-100 text-center">
+      <div class="card-body">
+        <i class="fas fa-utensils fa-2x mb-3 text-warning"></i>
+        <h5 class="card-title">Meals</h5>
+        <a href="{% url 'admin:meals_meal_changelist' %}" class="btn btn-primary mt-2">
+          Manage Meals
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Users{% endblock %}
+{% block header %}User Management{% endblock %}
+{% block actions %}
+  <a href="/api/users/users/new/" class="btn btn-success">+ New User</a>
+{% endblock %}
+{% block back %}{% endblock %}
+{% block content %}
+  <table class="table">
+    <thead><tr><th>Username</th><th>Email</th><th>Role</th></tr></thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
