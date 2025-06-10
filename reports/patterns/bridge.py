@@ -1,4 +1,4 @@
-# reports/patterns/bridge.py
+
 from abc import ABC, abstractmethod
 from reports.query import current_inventory
 

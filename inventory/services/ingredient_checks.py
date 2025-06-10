@@ -1,4 +1,4 @@
-# inventory/services/ingredient_checks.py
+
 from abc import ABC, abstractmethod
 from inventory.models import Inventory, IngredientQuantityError
 

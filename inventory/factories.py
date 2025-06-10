@@ -1,4 +1,4 @@
-# inventory/factories.py
+
 from abc import ABC, abstractmethod
 from inventory.models import Ingredient, IngredientType
 
